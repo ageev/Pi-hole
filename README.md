@@ -11,12 +11,13 @@ There are multiple ways to have pi-hole installed: native app, Virtual Machine, 
 1. copy the "docker-compose.yml" file from this repo to your docker folder (probably /Volume1/docker)
 2. customize the docker-compose file (see below)
 3. SSH to NAS
-```
+```bash
 cd /volume1/docker
 sudo docker-compose up -d
 ```
 4. all done!
-if you need to upgrade the container, stop it 1st. Run ```sudo docker system prune -a```. This will remove everything except the pi-hole config/logs folder. And do the (3) again. 
+
+if you need to upgrade the container, stop it 1st. Run ```sudo docker system prune -a```. This will remove everything except the pi-hole config/logs folder and do the (3) again. 
 
 # Step 2. Adding proper route to docker's macvlan network adapter
 Docker's macvlan adapters are available for LAN users, but are not available for DSM/Docker users. Generaly speaking that's not an issue, but if you want, for example, to add pi-hole to your home-assistant container running on the same docker (like I did) you need this.
@@ -24,7 +25,7 @@ Docker's macvlan adapters are available for LAN users, but are not available for
 2. chmod 755 <filename>
 3. andjust & copy this into the file
 
-```
+```bash
 #!/bin/bash
 
 if [ "$1" = "start" ];
@@ -36,10 +37,10 @@ then
     ip route add 192.168.7.8/32 dev dlink0
 fi
 ```
-192.168.7.127/32 - just a random IP to use as a virtual adapter's IP
-dlink0 - virtual interface name
-ovs_eth0 - Synology DSM interface name
-192.168.7.8/32 - pi-hole container's IP
+* 192.168.7.127/32 - just a random IP to use as a virtual adapter's IP
+* dlink0 - virtual interface name
+* ovs_eth0 - Synology DSM interface name
+* 192.168.7.8/32 - pi-hole container's IP
 
 "sleep 60" is needed for script to work properly, otherwise it fails. 
   
