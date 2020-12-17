@@ -16,6 +16,7 @@ cd /volume1/docker
 sudo docker-compose up -d
 ```
 4. all done!
+if you need to upgrade the container, stop it 1st. Run ```sudo docker system prune -a```. This will remove everything except the pi-hole config/logs folder. And do the (3) again. 
 
 # Step 2. Adding proper route to docker's macvlan network adapter
 Docker's macvlan adapters are available for LAN users, but are not available for DSM/Docker users. Generaly speaking that's not an issue, but if you want, for example, to add pi-hole to your home-assistant container running on the same docker (like I did) you need this.
