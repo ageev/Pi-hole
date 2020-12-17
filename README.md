@@ -54,5 +54,5 @@ fi
 Here is the official documentation on all parameters [2]. I found out that my DNS settings were not preserved during container restart. That's why I put them inside the container configuration.
   
 # Links
-[1] Synology DSM developer guide https://www.synology.com/en-us/support/developer#tool
-[2] https://github.com/pi-hole/docker-pi-hole
+* [1] Synology DSM developer guide https://www.synology.com/en-us/support/developer#tool
+* [2] https://github.com/pi-hole/docker-pi-hole
