@@ -5,7 +5,7 @@ There are multiple ways to have pi-hole installed: native app, Virtual Machine, 
 1. create a "docker" folder on NAS. In will be used to store container's configs
 2. install docker in DSM
 3. create a docker user. Set user's persmissions accordingly (write access to docker folder, remove everything else)
-4. get user ID and group ID using "id <username>" console command. Note the UID and GID numbers
+4. get user ID and group ID using "id *docker_username*" console command. Note the UID and GID numbers
   
 # Step 1. Docker-compose
 1. copy the "docker-compose.yml" file from this repo to your docker folder (probably /Volume1/docker)
