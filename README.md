@@ -22,7 +22,8 @@ if you need to upgrade the container, stop it 1st. Run ```sudo docker system pru
 
 # Step 2. Importing lists
 Default pi-hole lists are too unrestrictive. My average ad blocking rate for average home network is 20% with default list, 40-80% with additional ones. 
-Download the lists.zip file. Go to pi-hole admin -> Settings -> Teleporter -> Restore and import the file content.  
+Download the pi-hole....tar.gz file. Go to pi-hole admin -> Settings -> Teleporter -> Restore and import the file content.
+It may block smthng important -> goto pihole dashboard, go through your logs and build your own whitelist.
 
 # Step 3. Adding proper route to docker's macvlan network adapter
 Docker's macvlan adapters are available for LAN users, but are not available for DSM/Docker users. Generaly speaking that's not an issue, but if you want, for example, to add pi-hole to your home-assistant container running on the same docker (like I did) you need this.
