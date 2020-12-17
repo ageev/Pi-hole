@@ -6,6 +6,7 @@ There are multiple ways to have pi-hole installed: native app, Virtual Machine, 
 2. install docker in DSM
 3. create a docker user. Set user's persmissions accordingly (write access to docker folder, remove everything else)
 4. get user ID and group ID using "id *docker_username*" console command. Note the UID and GID numbers
+5. create *pihole* folder inside *docker* folder. Create *dnsmasq* folder inside *pihole* folder
   
 # Step 1. Docker-compose
 1. copy the "docker-compose.yml" file from this repo to your docker folder (probably /Volume1/docker)
@@ -43,7 +44,10 @@ fi
 * 192.168.7.8/32 - pi-hole container's IP
 
 "sleep 60" is needed for script to work properly, otherwise it fails. 
-  
+
+# Step 3. Customising docker-compose.yml 
+Here is the official documentation on all parameters [2]. I found out that my DNS settings were not preserved during container restart. That's why I put them inside the container configuration.
   
 # Links
 [1] Synology DSM developer guide https://www.synology.com/en-us/support/developer#tool
+[2] https://github.com/pi-hole/docker-pi-hole
