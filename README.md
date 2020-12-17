@@ -18,9 +18,13 @@ sudo docker-compose up -d
 ```
 4. all done!
 
-if you need to upgrade the container, stop it 1st. Run ```sudo docker system prune -a```. This will remove everything except the pi-hole config/logs folder and do the (3) again. 
+if you need to upgrade the container, stop it 1st. Run ```sudo docker system prune -a```. This will remove everything except the pi-hole config/logs folder and do the (3) again.
 
-# Step 2. Adding proper route to docker's macvlan network adapter
+# Step 2. Importing lists
+Default pi-hole lists are too unrestrictive. My average ad blocking rate for average home network is 20% with default list, 40-80% with additional ones. 
+Download the lists.zip file. Go to pi-hole admin -> Settings -> Teleporter -> Restore and import the file content.  
+
+# Step 3. Adding proper route to docker's macvlan network adapter
 Docker's macvlan adapters are available for LAN users, but are not available for DSM/Docker users. Generaly speaking that's not an issue, but if you want, for example, to add pi-hole to your home-assistant container running on the same docker (like I did) you need this.
 1. create a file in /usr/local/etc/rc.d folder with .sh extention (this is a DSM script autostart directory[1])
 2. chmod 755 <filename>
@@ -45,7 +49,7 @@ fi
 
 "sleep 60" is needed for script to work properly, otherwise it fails. 
 
-# Step 3. Customising docker-compose.yml 
+# Step 4. Customising docker-compose.yml 
 Here is the official documentation on all parameters [2]. I found out that my DNS settings were not preserved during container restart. That's why I put them inside the container configuration.
   
 # Links
