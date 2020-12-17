@@ -38,8 +38,8 @@ then
 fi
 ```
 * 192.168.7.127/32 - just a random IP to use as a virtual adapter's IP
-* dlink0 - virtual interface name
-* ovs_eth0 - Synology DSM interface name
+* dlink0 - new virtual network interface name
+* ovs_eth0 - Synology DSM network interface name
 * 192.168.7.8/32 - pi-hole container's IP
 
 "sleep 60" is needed for script to work properly, otherwise it fails. 
